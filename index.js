@@ -8,7 +8,7 @@ app.use(express.json());
 app.post("/", (req, res) => {
   console.log("Data", req.body);
   const { subject, email, text } = req.body;
-  if (email) {
+  if ((email, subject, text)) {
     res.status(200).json({
       message: "Your Message was Sent! Disu Will get in touch with you soon",
     });
