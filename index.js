@@ -8,14 +8,15 @@ app.use(express.json());
 app.post("/", (req, res) => {
   console.log("Data", req.body);
   const { subject, email, text } = req.body;
-  if (!email || !text) {
-    res
-      .status(403)
-      .json({ message: "Please input your email and Write a Text" });
+  if (email) {
+    res.status(200).json({
+      message: "Your Message was Sent! Disu Will get in touch with you soon",
+    });
+  } else {
+    res.status(403).json({
+      message: "You need to input your email. Thanks",
+    });
   }
-  res.status(200).json({
-    message: "Your Message was Sent! Disu Will get in touch with you soon",
-  });
 });
 
 app.use(express.static(path.join(__dirname, "public")));
